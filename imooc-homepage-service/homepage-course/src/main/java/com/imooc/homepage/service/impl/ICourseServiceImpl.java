@@ -8,9 +8,12 @@ import com.imooc.homepage.service.ICourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 课程服务功能实现
@@ -31,7 +34,17 @@ public class ICourseServiceImpl implements ICourseService {
 
     @Override
     public List<CourseInfo> getCourseInfos(CourseInfoRequest request) {
-        return null;
+
+        if (CollectionUtils.isEmpty(request.getIds())){
+            return Collections.emptyList();
+        }
+
+        List<HomepageCourse> courses = homepageCourseDao.findAllById(request.getIds());
+
+        //返回对应的List
+        return courses.stream()
+                .map(this::buildCourseInfo)
+                .collect(Collectors.toList());
     }
 
     /**
