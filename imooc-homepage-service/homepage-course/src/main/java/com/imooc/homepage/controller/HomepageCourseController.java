@@ -26,6 +26,12 @@ public class HomepageCourseController {
         this.courseService=courseService;
     }
 
+    /**
+     * 127.0.0.1:7001/homepage-course/get/course?id=  没有网关
+     * 127.0.0.1:9000/imooc/homepage-course/get/course?id 使用网关分发
+     * @param id
+     * @return
+     */
     @GetMapping("/get/course")
     public CourseInfo getCourseInfo(Long id){
         log.info("<homepage-course>:get course -> {}",id);

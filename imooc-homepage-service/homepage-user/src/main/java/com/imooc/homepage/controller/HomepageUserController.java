@@ -38,6 +38,13 @@ public class HomepageUserController {
         return userService.getUserInfo(id);
     }
 
+    /**
+     *  127.0.0.1:7000/homepage-user/get/user/course?id=1 无网关
+     *
+     *  127.0.0.1:9000/imooc/homepage-user/get/user/course?id=1使用网关分发
+     * @param id
+     * @return
+     */
     @GetMapping("/get/user/course")
     public UserCourseInfo getUserCourseInfo(Long id){
         log.info("<homepage-user>: get user course info -> {}", id);

@@ -8,3 +8,19 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
+
+
+# 所有url前缀homepage-course 都会路由到course服务中 -> serviceId 就是注册到Eureka中的服务名称
+
+# 通过网关实现对服务的分发
+zuul:
+  prefix: /imooc
+  routes:
+    course:
+      path: /homepage-course/**
+      serviceId: eureka-client-homepage-course
+      strip-prefix: false
+    user:
+      path: /homepage-user/**
+      serviceId: eureka-client-homepage-user
+      strip-prefix: false

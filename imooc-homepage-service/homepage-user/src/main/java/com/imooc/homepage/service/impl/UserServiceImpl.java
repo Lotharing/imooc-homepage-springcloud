@@ -12,7 +12,6 @@ import com.imooc.homepage.service.IUserService;
 import com.imooc.homepage.vo.CreateUserRequest;
 import com.imooc.homepage.vo.UserCourseInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
