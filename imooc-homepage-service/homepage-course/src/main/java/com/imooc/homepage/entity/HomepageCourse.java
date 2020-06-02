@@ -23,7 +23,7 @@ import java.util.Date;
 public class HomepageCourse {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
     private Long id;
 
@@ -57,7 +57,7 @@ public class HomepageCourse {
     @LastModifiedDate
     private Date updateTime;
 
-    public HomepageCourse(String courseName,Integer courseType,String CourseIcon,String courseIntro){
+    public HomepageCourse(String courseName,Integer courseType,String courseIcon,String courseIntro){
         this.courseName=courseName;
         this.courseType=courseType;
         this.courseIcon=courseIcon;
